@@ -1,13 +1,11 @@
 const express = require("express");
-const app = express();
 const http = require("http");
-const server = http.createServer(app);
 const { Server } = require("socket.io");
-
-const port = 4000;
-
 const cors = require("cors");
-app.use(cors());
+
+const app = express();
+const port = process.env.PORT || 4000;
+const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
@@ -16,31 +14,38 @@ const io = new Server(server, {
   },
 });
 
+// Middleware
+app.use(cors());
+
+// Routes
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+// Socket.io logic
 io.on("connection", (socket) => {
-  console.log("a user connected", socket.id);
+  console.log(`User connected: ${socket.id}`);
 
   socket.on("join-room", (meetingId) => {
-    console.log(meetingId);
+    console.log(`User joined room: ${meetingId}`);
     socket.join(meetingId);
   });
 
   socket.on("sendMessage", ({ meetingId, messageObj }) => {
-    console.log("Message from client: ", meetingId, messageObj);
-
-    // Optionally, send a message back to the client
-
+    console.log(`Message in room ${meetingId}:`, messageObj);
     io.to(meetingId).emit("messageFromServer", messageObj);
   });
 
   socket.on("disconnect", () => {
-    console.log("user disconnected", socket.id);
+    console.log(`User disconnected: ${socket.id}`);
   });
 });
 
-server.listen(port, () => {
-  console.log("listening on *:3000");
+// Server listening with error handling
+server.listen(port, (err) => {
+  if (err) {
+    console.error("Error starting the server:", err);
+  } else {
+    console.log(`Server listening on port ${port}`);
+  }
 });
