@@ -14,8 +14,13 @@ const io = new Server(server, {
   },
 });
 
+const corsOptions = {
+  origin: "*", // Replace with your front-end domain
+  methods: ["GET", "POST"],
+  credentials: true, // Enable credentials if needed
+};
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Routes
 app.get("/", (req, res) => {
