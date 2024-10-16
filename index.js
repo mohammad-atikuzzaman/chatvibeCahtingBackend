@@ -15,35 +15,31 @@ const io = new Server(server, {
 });
 
 const corsOptions = {
-  origin: "*", // Replace with your front-end domain
+  origin: "*",
   methods: ["GET", "POST"],
-  credentials: true, // Enable credentials if needed
+  credentials: true,
 };
-// Middleware
+
 app.use(cors(corsOptions));
 
-// Routes
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
 // Socket.io logic
 io.on("connection", (socket) => {
-  console.log(`User connected: ${socket.id}`);
 
   socket.on("join-room", (meetingId) => {
-    console.log(`User joined room: ${meetingId}`);
     socket.join(meetingId);
   });
 
   socket.on("sendMessage", ({ meetingId, messageObj }) => {
-    console.log(`Message in room ${meetingId}:`, messageObj);
     io.to(meetingId).emit("messageFromServer", messageObj);
   });
 
-  socket.on("disconnect", () => {
-    console.log(`User disconnected: ${socket.id}`);
-  });
+  // socket.on("disconnect", () => {
+  //   console.log(`User disconnected: ${socket.id}`);
+  // });
 });
 
 // Server listening with error handling
