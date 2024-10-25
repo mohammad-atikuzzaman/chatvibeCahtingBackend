@@ -48,3 +48,11 @@ By using the dashboard panel users can use the feature of our application.
 * Express js
 * socket io
 * cors
+
+## Getting started
+ For run this project in local machine You need to clone this project
+ ```bash
+ #For cloning this project
+ git clone https://github.com/mohammad-atikuzzaman/chatvibeCahtingBackend.git
+ ```
+ 
