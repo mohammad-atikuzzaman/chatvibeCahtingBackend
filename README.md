@@ -41,3 +41,10 @@ By using the dashboard panel users can use the feature of our application.
 * Disable video/audio
 * Allow screen share
 * Disable screen share
+
+
+##   Used Technologies
+* Node js
+* Express js
+* socket io
+* cors
