@@ -4,3 +4,9 @@ This is a video and audio conference application, crated for seamless and high p
 
 By using the dashboard panel users can use the feature of our application.
 
+## This Backed's Features
+* Join a user in a meeting room
+* Send message in this room
+* Receive messages form this room
+
+
