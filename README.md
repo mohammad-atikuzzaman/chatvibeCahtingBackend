@@ -56,3 +56,14 @@ By using the dashboard panel users can use the feature of our application.
  git clone https://github.com/mohammad-atikuzzaman/chatvibeCahtingBackend.git
  ```
  
+ ```bash
+ #For install dependencies
+ npm install 
+ ```
+ ```bash
+ #For run in local
+ npm run dev
+ #or //if dev is not work
+ npm run start 
+ ```
+
