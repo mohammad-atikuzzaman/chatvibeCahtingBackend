@@ -1,4 +1,4 @@
-<h2 style="text-align: center;">Project ChatVibe In Call message server</h2>
+## Project ChatVibe In Call message server
 
 This is backend for inCall messaging of project [ChatVibe](https://chat-vibe-ashy.vercel.app) created by team MERNMaestro
 
