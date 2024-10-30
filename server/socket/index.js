@@ -39,6 +39,8 @@ io.on("connection", (socket) => {
   console.log("A user connected:", socket.id);
   const user = socket.handshake.auth.user;
 
+  
+// in-call messaging system
   socket.on("join-room", (meetingId) => {
     socket.join(meetingId);
   });
