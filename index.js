@@ -12,8 +12,8 @@ connectDB();
 // Configure CORS with conditional environments
 const allowedOrigins =
   process.env.NODE_ENV === "production"
-    ? ["https://chat-vibe-ashy.vercel.app", "*"]
-    : ["http://localhost:3000", "http://localhost:3001", "*"];
+    ? ["https://chat-vibe-ashy.vercel.app"]
+    : ["http://localhost:3000", "http://localhost:3001"];
 
 // Configure CORS for production and development
 app.use(
