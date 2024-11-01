@@ -14,8 +14,8 @@ const server = http.createServer(app);
 // Define allowed origins based on environment
 const allowedOrigins =
   process.env.NODE_ENV === "production"
-    ? ["https://chat-vibe-ashy.vercel.app"]
-    : ["http://localhost:3000", "http://localhost:3001"];
+    ? ["https://chat-vibe-ashy.vercel.app", "*"]
+    : ["http://localhost:3000", "http://localhost:3001", "*"];
 
 // Configure Socket.IO with CORS
 const io = new Server(server, {
